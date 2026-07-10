@@ -1,19 +1,36 @@
 package com.marlebas.ItauJava.estatisticas;
 
+import com.marlebas.ItauJava.transacoes.TransacaoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.OffsetDateTime;
+
+@Slf4j
 @RestController
-@RequestMapping("/estatisticas")
+@RequestMapping("/estatistica")
 public class EstatisticasController {
 
-// criar rota de estatistica e uma lógica para trabalhar com os dados
-    @GetMapping
-    public ResponseEntity listarEstatisticas() {
+    private final EstatisticasProperties estatisticasProperties;
+    private final TransacaoRepository transacaoRepository;
 
-        return ResponseEntity.status(HttpStatus.OK).build();
+    public EstatisticasController(EstatisticasProperties estatisticasProperties, TransacaoRepository transacaoRepository) {
+        this.estatisticasProperties = estatisticasProperties;
+        this.transacaoRepository = transacaoRepository;
+    }
+
+    @GetMapping
+    public ResponseEntity estatistica() {
+
+        //LOG DE REQUISIÇÃO CRIAO VIA LOMBOK
+        log.info("Calculando estatísticas de transações nos últimos " + estatisticasProperties.segundos() + " segundos");
+
+        final var horaInicial = OffsetDateTime.now()
+                .minusSeconds(estatisticasProperties.segundos());
+        return ResponseEntity.ok(transacaoRepository.estatistica(horaInicial));
     }
 }

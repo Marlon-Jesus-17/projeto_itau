@@ -1,4 +1,4 @@
-package com.marlebas.ItauJava;
+package com.marlebas.ItauJava.transacoes;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

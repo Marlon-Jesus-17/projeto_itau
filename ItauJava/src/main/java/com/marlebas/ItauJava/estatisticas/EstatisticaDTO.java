@@ -1,4 +1,4 @@
-package com.marlebas.ItauJava;
+package com.marlebas.ItauJava.estatisticas;
 
 import lombok.Getter;
 
