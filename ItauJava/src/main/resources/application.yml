@@ -1,2 +1,8 @@
 estatistica:
   segundos: 60
+
+# Configuração do Swagger / SpringDoc
+springdoc:
+  api-docs:
+    path: /v3/api-docs.yaml
+    enabled: true
