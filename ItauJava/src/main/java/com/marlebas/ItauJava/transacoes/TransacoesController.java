@@ -1,5 +1,7 @@
 package com.marlebas.ItauJava.transacoes;
 
+import com.marlebas.ItauJava.Docs.TransacaoControllerDoc;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -9,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/transacao")
-public class TransacoesController {
+public class TransacoesController implements TransacaoControllerDoc {
 
     private TransacaoService transacaoService;
     private TransacaoRepository transacaoRepository;
