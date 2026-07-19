@@ -9,7 +9,7 @@ import java.time.OffsetDateTime;
 public class TransacaoService {
 
     public void validarTransacao(TransacaoDTO transacaoDTO) {
-        //Valor maior ou igual a 0
+
         if(transacaoDTO.getValor().compareTo(BigDecimal.ZERO) < 0){
             throw new IllegalArgumentException("Erro: Transações devem ter valor maior que zero");
         }
