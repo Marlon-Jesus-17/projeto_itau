@@ -6,3 +6,6 @@ springdoc:
   api-docs:
     path: /v3/api-docs.yaml
     enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
